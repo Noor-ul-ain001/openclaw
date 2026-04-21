@@ -118,13 +118,13 @@ Want to chat from your phone? [Telegram](https://docs.openclaw.ai/channels/teleg
 
 One assistant across **20+ platforms**. Wherever you already chat, OpenClaw is there.
 
-| | | | |
-|---|---|---|---|
-| WhatsApp | Telegram | Slack | Discord |
-| Signal | iMessage | Google Chat | Microsoft Teams |
-| Matrix | IRC | LINE | Mattermost |
-| Feishu | Nextcloud Talk | Nostr | Synology Chat |
-| Tlon | Twitch | Zalo | WeChat / QQ |
+|          |                |             |                 |
+| -------- | -------------- | ----------- | --------------- |
+| WhatsApp | Telegram       | Slack       | Discord         |
+| Signal   | iMessage       | Google Chat | Microsoft Teams |
+| Matrix   | IRC            | LINE        | Mattermost      |
+| Feishu   | Nextcloud Talk | Nostr       | Synology Chat   |
+| Tlon     | Twitch         | Zalo        | WeChat / QQ     |
 
 ---
 
@@ -149,9 +149,9 @@ An agent-driven visual workspace with [A2UI](https://docs.openclaw.ai/platforms/
 
 Extend your assistant with community-built or custom skills from [ClawHub](https://clawhub.com).
 
-| Path | Description |
-|---|---|
-| `~/.openclaw/workspace` | Your personal workspace root |
+| Path                                            | Description                  |
+| ----------------------------------------------- | ---------------------------- |
+| `~/.openclaw/workspace`                         | Your personal workspace root |
 | `~/.openclaw/workspace/skills/<skill>/SKILL.md` | Individual skill definitions |
 
 **Automation options:** Cron jobs · Webhooks · Gmail Pub/Sub
@@ -224,12 +224,12 @@ Run `openclaw doctor` to surface risky or misconfigured DM policies.
 
 ### Sandbox Model
 
-| Session | Behavior |
-|---|---|
-| `main` | Full host access (it's just you) |
-| non-`main` | Sandboxed via Docker (SSH / OpenShell also available) |
-| **Allowed** in sandbox | `bash`, `process`, `read`, `write`, `edit`, `sessions_*` |
-| **Denied** in sandbox | `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway` |
+| Session                | Behavior                                                   |
+| ---------------------- | ---------------------------------------------------------- |
+| `main`                 | Full host access (it's just you)                           |
+| non-`main`             | Sandboxed via Docker (SSH / OpenShell also available)      |
+| **Allowed** in sandbox | `bash`, `process`, `read`, `write`, `edit`, `sessions_*`   |
+| **Denied** in sandbox  | `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway` |
 
 → [Security guide](https://docs.openclaw.ai/gateway/security) · [Sandboxing](https://docs.openclaw.ai/gateway/sandboxing)
 
@@ -292,11 +292,11 @@ pnpm build && pnpm ui:build
 
 ### Release Channels
 
-| Channel | Tag format | npm dist-tag |
-|---|---|---|
-| stable | `vYYYY.M.D` | `latest` |
-| beta | `vYYYY.M.D-beta.N` | `beta` |
-| dev | moving `main` head | `dev` |
+| Channel | Tag format         | npm dist-tag |
+| ------- | ------------------ | ------------ |
+| stable  | `vYYYY.M.D`        | `latest`     |
+| beta    | `vYYYY.M.D-beta.N` | `beta`       |
+| dev     | moving `main` head | `dev`        |
 
 ```bash
 openclaw update --channel stable|beta|dev
@@ -308,16 +308,16 @@ openclaw update --channel stable|beta|dev
 
 ## Docs by Goal
 
-| Goal | Links |
-|---|---|
-| New here | [Getting started](https://docs.openclaw.ai/start/getting-started) · [Onboarding wizard](https://docs.openclaw.ai/start/wizard) · [Updating](https://docs.openclaw.ai/install/updating) |
-| Channel setup | [All channels](https://docs.openclaw.ai/channels) · [WhatsApp](https://docs.openclaw.ai/channels/whatsapp) · [Telegram](https://docs.openclaw.ai/channels/telegram) · [Discord](https://docs.openclaw.ai/channels/discord) · [Slack](https://docs.openclaw.ai/channels/slack) |
-| Apps & nodes | [macOS](https://docs.openclaw.ai/platforms/macos) · [iOS](https://docs.openclaw.ai/platforms/ios) · [Android](https://docs.openclaw.ai/platforms/android) · [Nodes](https://docs.openclaw.ai/nodes) |
-| Config & security | [Configuration](https://docs.openclaw.ai/gateway/configuration) · [Security](https://docs.openclaw.ai/gateway/security) · [Sandboxing](https://docs.openclaw.ai/gateway/sandboxing) |
-| Remote access | [Gateway](https://docs.openclaw.ai/gateway) · [Remote](https://docs.openclaw.ai/gateway/remote) · [Tailscale](https://docs.openclaw.ai/gateway/tailscale) · [Web surfaces](https://docs.openclaw.ai/web) |
-| Automation | [Tools](https://docs.openclaw.ai/tools) · [Skills](https://docs.openclaw.ai/tools/skills) · [Cron jobs](https://docs.openclaw.ai/automation/cron-jobs) · [Webhooks](https://docs.openclaw.ai/automation/webhook) · [Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub) |
-| Internals | [Architecture](https://docs.openclaw.ai/concepts/architecture) · [Agent](https://docs.openclaw.ai/concepts/agent) · [Session model](https://docs.openclaw.ai/concepts/session) · [Gateway protocol](https://docs.openclaw.ai/reference/rpc) |
-| Troubleshooting | [Channel troubleshooting](https://docs.openclaw.ai/channels/troubleshooting) · [Logging](https://docs.openclaw.ai/logging) |
+| Goal              | Links                                                                                                                                                                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| New here          | [Getting started](https://docs.openclaw.ai/start/getting-started) · [Onboarding wizard](https://docs.openclaw.ai/start/wizard) · [Updating](https://docs.openclaw.ai/install/updating)                                                                                               |
+| Channel setup     | [All channels](https://docs.openclaw.ai/channels) · [WhatsApp](https://docs.openclaw.ai/channels/whatsapp) · [Telegram](https://docs.openclaw.ai/channels/telegram) · [Discord](https://docs.openclaw.ai/channels/discord) · [Slack](https://docs.openclaw.ai/channels/slack)        |
+| Apps & nodes      | [macOS](https://docs.openclaw.ai/platforms/macos) · [iOS](https://docs.openclaw.ai/platforms/ios) · [Android](https://docs.openclaw.ai/platforms/android) · [Nodes](https://docs.openclaw.ai/nodes)                                                                                  |
+| Config & security | [Configuration](https://docs.openclaw.ai/gateway/configuration) · [Security](https://docs.openclaw.ai/gateway/security) · [Sandboxing](https://docs.openclaw.ai/gateway/sandboxing)                                                                                                  |
+| Remote access     | [Gateway](https://docs.openclaw.ai/gateway) · [Remote](https://docs.openclaw.ai/gateway/remote) · [Tailscale](https://docs.openclaw.ai/gateway/tailscale) · [Web surfaces](https://docs.openclaw.ai/web)                                                                             |
+| Automation        | [Tools](https://docs.openclaw.ai/tools) · [Skills](https://docs.openclaw.ai/tools/skills) · [Cron jobs](https://docs.openclaw.ai/automation/cron-jobs) · [Webhooks](https://docs.openclaw.ai/automation/webhook) · [Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub) |
+| Internals         | [Architecture](https://docs.openclaw.ai/concepts/architecture) · [Agent](https://docs.openclaw.ai/concepts/agent) · [Session model](https://docs.openclaw.ai/concepts/session) · [Gateway protocol](https://docs.openclaw.ai/reference/rpc)                                          |
+| Troubleshooting   | [Channel troubleshooting](https://docs.openclaw.ai/channels/troubleshooting) · [Logging](https://docs.openclaw.ai/logging)                                                                                                                                                           |
 
 ---
 
@@ -396,8 +396,10 @@ Special thanks to [Mario Zechner](https://mariozachner.at/) for his support and 
 Thanks to all clawtributors! 🦞
 
 <!-- clawtributors:start -->
+
 [![steipete](https://avatars.githubusercontent.com/u/58493?v=4&s=48)](https://github.com/steipete) [![vincentkoc](https://avatars.githubusercontent.com/u/25068?v=4&s=48)](https://github.com/vincentkoc) [![Takhoffman](https://avatars.githubusercontent.com/u/781889?v=4&s=48)](https://github.com/Takhoffman) [![obviyus](https://avatars.githubusercontent.com/u/22031114?v=4&s=48)](https://github.com/obviyus) [![gumadeiras](https://avatars.githubusercontent.com/u/5599352?v=4&s=48)](https://github.com/gumadeiras) [![Mariano Belinky](https://avatars.githubusercontent.com/u/132747814?v=4&s=48)](https://github.com/mbelinky) [![vignesh07](https://avatars.githubusercontent.com/u/1436853?v=4&s=48)](https://github.com/vignesh07) [![joshavant](https://avatars.githubusercontent.com/u/830519?v=4&s=48)](https://github.com/joshavant) [![scoootscooob](https://avatars.githubusercontent.com/u/167050519?v=4&s=48)](https://github.com/scoootscooob) [![jacobtomlinson](https://avatars.githubusercontent.com/u/1610850?v=4&s=48)](https://github.com/jacobtomlinson)
 [![shakkernerd](https://avatars.githubusercontent.com/u/165377636?v=4&s=48)](https://github.com/shakkernerd) [![sebslight](https://avatars.githubusercontent.com/u/19554889?v=4&s=48)](https://github.com/sebslight) [![tyler6204](https://avatars.githubusercontent.com/u/64381258?v=4&s=48)](https://github.com/tyler6204) [![ngutman](https://avatars.githubusercontent.com/u/1540134?v=4&s=48)](https://github.com/ngutman) [![thewilloftheshadow](https://avatars.githubusercontent.com/u/35580099?v=4&s=48)](https://github.com/thewilloftheshadow) [![Sid-Qin](https://avatars.githubusercontent.com/u/201593046?v=4&s=48)](https://github.com/Sid-Qin) [![mcaxtr](https://avatars.githubusercontent.com/u/7562095?v=4&s=48)](https://github.com/mcaxtr) [![eleqtrizit](https://avatars.githubusercontent.com/u/31522568?v=4&s=48)](https://github.com/eleqtrizit) [![BunsDev](https://avatars.githubusercontent.com/u/68980965?v=4&s=48)](https://github.com/BunsDev) [![cpojer](https://avatars.githubusercontent.com/u/13352?v=4&s=48)](https://github.com/cpojer)
+
 <!-- clawtributors:end -->
 
 > The full contributor wall is maintained automatically. See [CONTRIBUTING.md](CONTRIBUTING.md) to join.
