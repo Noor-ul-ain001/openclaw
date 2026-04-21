@@ -533,10 +533,10 @@ API key auth, and dynamic model resolution.
       | 29 | `buildMissingAuthMessage` | Custom missing-auth hint |
       | 30 | `suppressBuiltInModel` | Hide stale upstream rows |
       | 31 | `augmentModelCatalog` | Synthetic forward-compat rows |
-      | 32 | `isBinaryThinking` | Binary thinking on/off |
-      | 33 | `supportsXHighThinking` | `xhigh` reasoning support |
-      | 34 | `supportsAdaptiveThinking` | Adaptive thinking support |
-      | 35 | `resolveDefaultThinkingLevel` | Default `/think` policy |
+      | 32 | `resolveThinkingProfile` | Model-specific `/think` option set |
+      | 33 | `isBinaryThinking` | Binary thinking on/off compatibility |
+      | 34 | `supportsXHighThinking` | `xhigh` reasoning support compatibility |
+      | 35 | `resolveDefaultThinkingLevel` | Default `/think` policy compatibility |
       | 36 | `isModernModelRef` | Live/smoke model matching |
       | 37 | `prepareRuntimeAuth` | Token exchange before inference |
       | 38 | `resolveUsageAuth` | Custom usage credential parsing |

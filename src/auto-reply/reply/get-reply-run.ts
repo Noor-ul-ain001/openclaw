@@ -27,10 +27,11 @@ import { resolveEnvelopeFormatOptions } from "../envelope.js";
 import type { MsgContext, TemplateContext } from "../templating.js";
 import {
   type ElevatedLevel,
-  formatXHighModelHint,
+  formatThinkingLevels,
+  isThinkingLevelSupported,
   normalizeThinkLevel,
   type ReasoningLevel,
-  supportsXHighThinking,
+  resolveSupportedThinkingLevel,
   type ThinkLevel,
   type VerboseLevel,
 } from "../thinking.js";
@@ -413,7 +414,7 @@ export async function runPreparedReply(
   if (!resolvedThinkLevel && prefixedBodyBase) {
     const parts = prefixedBodyBase.split(/\s+/);
     const maybeLevel = normalizeThinkLevel(parts[0]);
-    if (maybeLevel && (maybeLevel !== "xhigh" || supportsXHighThinking(provider, model))) {
+    if (maybeLevel && isThinkingLevelSupported({ provider, model, level: maybeLevel })) {
       resolvedThinkLevel = maybeLevel;
       prefixedBodyBase = parts.slice(1).join(" ").trim();
     }
@@ -483,24 +484,37 @@ export async function runPreparedReply(
   if (!resolvedThinkLevel) {
     resolvedThinkLevel = await modelState.resolveDefaultThinkingLevel();
   }
-  if (resolvedThinkLevel === "xhigh" && !supportsXHighThinking(provider, model)) {
+  if (!isThinkingLevelSupported({ provider, model, level: resolvedThinkLevel })) {
     const explicitThink = directives.hasThinkDirective && directives.thinkLevel !== undefined;
     if (explicitThink) {
       typing.cleanup();
       return {
-        text: `Thinking level "xhigh" is only supported for ${formatXHighModelHint()}. Use /think high or switch to one of those models.`,
+        text: `Thinking level "${resolvedThinkLevel}" is not supported for ${provider}/${model}. Use one of: ${formatThinkingLevels(provider, model)}.`,
       };
     }
-    resolvedThinkLevel = "high";
-    if (sessionEntry && sessionStore && sessionKey && sessionEntry.thinkingLevel === "xhigh") {
-      sessionEntry.thinkingLevel = "high";
-      sessionEntry.updatedAt = Date.now();
-      sessionStore[sessionKey] = sessionEntry;
-      if (storePath) {
-        const { updateSessionStore } = await loadSessionStoreRuntime();
-        await updateSessionStore(storePath, (store) => {
-          store[sessionKey] = sessionEntry;
-        });
+    const fallbackThinkLevel = resolveSupportedThinkingLevel({
+      provider,
+      model,
+      level: resolvedThinkLevel,
+    });
+    if (fallbackThinkLevel !== resolvedThinkLevel) {
+      const previousThinkLevel = resolvedThinkLevel;
+      resolvedThinkLevel = fallbackThinkLevel;
+      if (
+        sessionEntry &&
+        sessionStore &&
+        sessionKey &&
+        sessionEntry.thinkingLevel === previousThinkLevel
+      ) {
+        sessionEntry.thinkingLevel = fallbackThinkLevel;
+        sessionEntry.updatedAt = Date.now();
+        sessionStore[sessionKey] = sessionEntry;
+        if (storePath) {
+          const { updateSessionStore } = await loadSessionStoreRuntime();
+          await updateSessionStore(storePath, (store) => {
+            store[sessionKey] = sessionEntry;
+          });
+        }
       }
     }
   }
