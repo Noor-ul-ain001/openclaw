@@ -624,6 +624,19 @@ export function resolveAllowedModelRefFromAliasIndex(params: {
 
   const status = params.getStatus(resolved.ref);
   if (!status.allowed) {
+    if (trimmed.includes("/")) {
+      const inferredProvider = inferUniqueProviderFromConfiguredModels({
+        cfg: params.cfg,
+        model: trimmed,
+      });
+      if (inferredProvider && inferredProvider !== resolved.ref.provider) {
+        const inferredRef = normalizeModelRef(inferredProvider, trimmed);
+        const retryStatus = params.getStatus(inferredRef);
+        if (retryStatus.allowed) {
+          return { ref: inferredRef, key: retryStatus.key };
+        }
+      }
+    }
     return { error: `model not allowed: ${status.key}` };
   }
 
