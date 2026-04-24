@@ -813,6 +813,41 @@ describe("model-selection", () => {
         ref: { provider: "opencode-go", model: "kimi-k2.5" },
       });
     });
+
+    it("resolves compound nvidia model id via provider inference fallback (#63029)", () => {
+      const cfg = {
+        agents: {
+          defaults: {
+            models: {
+              "nvidia/stepfun-ai/step-3.5-flash": {},
+              "nvidia/moonshotai/kimi-k2.5": {},
+            },
+          },
+        },
+      } as OpenClawConfig;
+
+      const stepfun = resolveAllowedModelRef({
+        cfg,
+        catalog: [],
+        raw: "stepfun-ai/step-3.5-flash",
+        defaultProvider: "anthropic",
+      });
+      expect(stepfun).toEqual({
+        key: "nvidia/stepfun-ai/step-3.5-flash",
+        ref: { provider: "nvidia", model: "stepfun-ai/step-3.5-flash" },
+      });
+
+      const moonshot = resolveAllowedModelRef({
+        cfg,
+        catalog: [],
+        raw: "moonshotai/kimi-k2.5",
+        defaultProvider: "anthropic",
+      });
+      expect(moonshot).toEqual({
+        key: "nvidia/moonshotai/kimi-k2.5",
+        ref: { provider: "nvidia", model: "moonshotai/kimi-k2.5" },
+      });
+    });
   });
 
   describe("resolveModelRefFromString", () => {
