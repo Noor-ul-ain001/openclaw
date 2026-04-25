@@ -1,0 +1,24 @@
+{
+  "name": "@openclaw/autoapprove",
+  "version": "2026.4.25",
+  "private": true,
+  "description": "OpenClaw plugin for allowlist-based auto-approval, session YOLO mode, and bulk approval of exec requests",
+  "type": "module",
+  "devDependencies": {
+    "@openclaw/plugin-sdk": "workspace:*",
+    "openclaw": "workspace:*"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.4.20"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "openclaw": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  }
+}
